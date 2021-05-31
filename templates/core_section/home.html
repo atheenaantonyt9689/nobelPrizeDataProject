@@ -1,8 +1,43 @@
 {% extends 'layouts/base.html' %}
 {% block content %}
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <div>
+
+
+
+        </div>
+        <h2>hgdjdjechscj</h2>
+        <table class="table table-bordered table-success mt-4">
+
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Country</th>
+              <th scope="col">Category</th>
+              <th scope="col">Count</th>
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>  
+              {% for i in data %}           
+              
+              <th scope="row">{{i.laureate__born_country}}</th>
+              
+              <td>{{i.category}}</td>
+              <td>{{i.category__count}}</td>
+              
+      
+            </tr>
+      
+      
+            {% endfor %}
+          </tbody>
+        </table>
+      
+      
+       
       </div>
 {% endblock %}
 
