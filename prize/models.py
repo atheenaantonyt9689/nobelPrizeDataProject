@@ -1,9 +1,9 @@
 from django.db import models
-
+from datetime import date
 class Laureate(models.Model):
     firstname= models.CharField(max_length=100)
     surname=models.CharField(max_length=100)
-    date_of_birth=models.DateField()
+    date_of_birth=models.CharField(max_length=20)
     born_country=models.CharField(max_length=100)
     affiliation=models.CharField(max_length=100)
     gender=models.CharField(max_length=100)

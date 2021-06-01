@@ -1,3 +1,4 @@
+from typing import Counter
 from django.core.management.base import BaseCommand
 from django.db.models.fields import DateField
 from prize.models import Laureate,NobelPrize
@@ -13,23 +14,35 @@ class Command(BaseCommand):
         nobel_prizedata=response_info['laureates']
 
         for data in nobel_prizedata:
-
             prize_data=data['prizes']
 
+
             for prize in prize_data:
-                #print(type(prize))
-                affiliation_var=prize['affiliations']                 
-                for aff_data in affiliation_var: 
-                    #print(type(aff_data))
-                             
-                    obj1=NobelPrize.objects.create(year=prize['year'],category=prize['category'],share=prize['share'],motivation=prize['motivation'])
-                    obj1.save()
+                #print(prize['affiliations'])              
+
+                affiliation_var=prize['affiliations']               
+
                 
-                    obj2=Laureate.objects.create(nobel_prize=obj1,firstname=data['firstname'],surname=data['surname'],date_of_birth=data['born'],born_country=data['bornCountry'],gender=data['gender'],affiliation=aff_data['country'])
-                    obj2.save()           
-               
-      
-      
+                for aff_data in affiliation_var:
+
+                    if type(affiliation_var[0])== dict:                                        
+
+                        
+                        obj1=NobelPrize.objects.create(year=prize['year'],category=prize['category'],share=prize['share'],motivation=prize['motivation'])
+                        obj1.save()
+                
+                        obj2=Laureate.objects.create(nobel_prize=obj1,firstname=data['firstname'],surname=data['surname'],date_of_birth=data['born'],born_country=data['bornCountry'],gender=data['gender'],affiliation=affiliation_var[0]['name'])
+                        obj2.save()
+
+                        #print(affiliation_var[0]['name']) 
+                   
+                    else:
+
+                        print('[]')
+
+                
+
+                
         
 
      

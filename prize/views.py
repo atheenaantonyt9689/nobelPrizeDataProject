@@ -12,8 +12,9 @@ class HomePageView(View):
     def get(self,request,*args,**kwargs): 
         
             
-        data =NobelPrize.objects.values('category','laureate__born_country' ).annotate(Count('category'))  
-        
+        data =NobelPrize.objects.values('category','laureate__born_country' ).annotate(Count('category'))
+       
+        print(data)
             
         
         context={
