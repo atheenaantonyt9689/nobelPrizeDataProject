@@ -1,0 +1,45 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+      <div class="starter-template">
+        <div>
+
+
+
+        </div>
+        <h2>hgdjdjechscj</h2>
+        <table class="table table-bordered table-success mt-4">
+
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">category</th>
+              <th scope="col">affiliation__count</th>
+              <th scope="col">laureate__affiliation</th>
+              
+                      
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>  
+              {% for i in affiliation_count %}     
+                   
+              
+              <th scope="row">{{i.category}}</th>
+              
+              <td>{{i.laureate__affiliation__count}}</td>
+
+              <td>{{i.laureate__affiliation}}</td>
+             
+                         
+              
+      
+            </tr>
+      
+      
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endblock %}
+      
