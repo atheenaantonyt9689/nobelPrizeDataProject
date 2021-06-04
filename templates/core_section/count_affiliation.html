@@ -6,33 +6,32 @@
 
 
         </div>
-        <h2>hgdjdjechscj</h2>
+        
+        
         <table class="table table-bordered table-success mt-4">
 
           <thead class="thead-dark">
             <tr>
-              <th scope="col">category</th>
-              <th scope="col">affiliation__count</th>
-              <th scope="col">laureate__affiliation</th>
               
-                      
               
+              <th scope="col"> University</th>
+              <th scope="col">NobelPrize Count</th>
+                    
               
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             
-            <tr>  
-              {% for i in affiliation_count %}     
-                   
+            <tr>
+              <br>  
               
-              <th scope="row">{{i.category}}</th>
+              <br><br>
+             <center> <h4>Count of Prizes Per Affiliation University</h4></center>
+              {% for i in affiliation_count %}           
               
-              <td>{{i.laureate__affiliation__count}}</td>
-
-              <td>{{i.laureate__affiliation}}</td>
-             
-                         
+              <th scope="row">{{i.laureate__affiliation}}</th>
+              
+              <td>{{i.id__count}}</td>
               
       
             </tr>
@@ -40,6 +39,8 @@
       
             {% endfor %}
           </tbody>
+          
         </table>
+        </div>
         {% endblock %}
       
