@@ -9,16 +9,17 @@ from django.db.models import Sum
 class HomePageView(View):
     model=Laureate,NobelPrize
     template_name='core_section/home.html'
-    def get(self,request,*args,**kwargs): 
-        
+    def get(self,request,*args,**kwargs):       
             
-        data =NobelPrize.objects.values('category','laureate__born_country').annotate(Count('category'),Count('laureate__born_country')).distinct()
+        #data =NobelPrize.objects.values('laureate__born_country',)#.annotate(Count('category').filter('category[physics]'))
+        ss=NobelPrize.objects.values('laureate__born_country','category').annotate(Count('category'))
        
-        print(data)
+        print(ss)
             
-        
+    
         context={
-           "data":data
+          #"data":data
+          "ss":ss
 
         }
         
@@ -29,15 +30,16 @@ class NobelPrizeGender(View):
     template_name='core_section/gender_based_count.html'
     def get(self,request,*args,**kwargs):      
             
-        gender_count1 =NobelPrize.objects.filter(year__range=["1990-01-01", "2000-01-1"]).values('category','laureate__gender','year','category').annotate(Count('category'),Count('laureate__gender'))
-        gender_count2 =NobelPrize.objects.filter(year__range=["2000-01-01", "2000-01-31"]).values('category','laureate__gender','year','category').annotate(Count('category'))
+        gender_count1 =NobelPrize.objects.filter(year__range=["1990-01-01", "2000-01-1"]).values('laureate__gender',).annotate(Count('id'))
+        gender_count2 =NobelPrize.objects.filter(year__range=["2000-01-01", "2020-01-31"]).values('laureate__gender').annotate(Count('id'))
 
-        print(gender_count1)
+        print("first:",gender_count1)
+        print("second:",gender_count2)
 
         context={
-            "gender_count1":gender_count1
+            "gender_count1":gender_count1,
+             "gender_count2":gender_count2
            
-
         }
         
         return render(request,"core_section/gender_based_count.html",context)

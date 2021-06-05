@@ -1,42 +1,50 @@
 {% extends 'layouts/base.html' %}
 {% block content %}
       <div class="starter-template">
+
+
         <div>
-
-
-
         </div>
         <h2>hgdjdjechscj</h2>
         <table class="table table-bordered table-success mt-4">
 
           <thead class="thead-dark">
+            <br>
+            <h4>Nobel prize counts based on gender</h4>
             <tr>
-              <th scope="col">category</th>
-              <th scope="col">gender</th>
-              <th scope="col">year</th>        
+              
+              <th scope="col">Gender</th>
+              <th scope="col">NobelPrize Count</th>   
+              <th scope="col">Year</th>      
               
             </tr>
           </thead>
           <tbody>
             
             <tr>  
-              {% for i in gender_count %}     
-                   
+              {% for i in gender_count1 %}                  
               
-              <th scope="row">{{i.category}}</th>
-              
-              <td>{{i.laureate__gender}}</td>
-              <td>{{i.category__count}}</td>
-              <td>{{i.year}}</td>
-              <td>{{i.laureate__gender__count}}</td>
-                         
-              
+            <td>{{i.laureate__gender}}</td>
+              <td>{{i.id__count}}</td>
+              <td>1990-2000</td>             
       
             </tr>
-      
-      
             {% endfor %}
-          </tbody>
+            <tr>  
+              {% for i in gender_count2 %}                  
+              
+            <td>{{i.laureate__gender}}</td>
+              <td>{{i.id__count}}</td>
+              <td>2000-2020</td>             
+      
+            </tr>
+            {% endfor %}
+                     
+              
+          </tbody>          
+        
         </table>
+
+        
         {% endblock %}
       
